@@ -9,14 +9,28 @@ repositories {
     mavenCentral()
 }
 
+ext{
+    assertJVersion = '3.23.1'
+    logbackVersion = '1.2.11'
+    serenityCoreVersion = '3.3.2'
+    serenityCucumberVersion= '3.3.2'
+    browserstacklocalVersion='1.0.3'
+}
+
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
-    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.2.1'
-    implementation group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '4.2.1'
-    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.2.0'
-}
+    testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.2.1'
+    testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '4.2.1'
+    testImplementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.2.0'
+    implementation group: 'com.konghq', name: 'unirest-java', version: '3.13.11'
 
-test {
-    useJUnitPlatform()
+    testImplementation  "net.serenity-bdd:serenity-core:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-cucumber:${serenityCucumberVersion}",
+            "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-screenplay-rest:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-ensure:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-junit:${serenityCoreVersion}",
+            "org.assertj:assertj-core:${assertJVersion}"
 }
